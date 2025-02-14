@@ -1,26 +1,126 @@
-/* Universal reset */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styling - pink background */
+/* BODY - Valentine-themed gradient background */
 body {
   font-family: 'Arial', sans-serif;
-  /* Simple solid background or use a gradient */
-  background: #fe6fa5; /* fallback pink color */
-  /* Example: linear gradient
-  background: linear-gradient(135deg, #fd6ca4, #ff90c3);
-  */
-
+  background: linear-gradient(135deg, #fd6ca4 0%, #ff90c3 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  /* We allow overflow so hearts can float off screen if desired */
+  overflow: hidden;
+  position: relative;
 }
 
-/* Card container */
+/* HEARTS CONTAINER */
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Behind the card */
+  pointer-events: none; /* So clicks pass through to the card */
+}
+
+/* INDIVIDUAL HEARTS */
+.heart {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #ff217a;
+  /* rotate 45deg + two circles for a heart shape */
+  transform: rotate(45deg);
+  bottom: -60px; /* Start just below bottom edge */
+  animation: floatUp 8s linear infinite;
+  opacity: 0.8;
+  /* Heart shape using pseudo-elements for the curves */
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #ff217a;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -20px;
+  left: 0;
+}
+
+.heart::after {
+  left: 20px;
+  top: 0;
+}
+
+/* FLOATING HEART ANIMATION */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.8;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(45deg); /* Move hearts up off screen */
+    opacity: 0;
+  }
+}
+
+/* EXAMPLE: Position hearts differently using nth-child */
+.heart:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 7s;
+}
+.heart:nth-child(2) {
+  left: 30%;
+  animation-delay: 2s;
+  animation-duration: 9s;
+}
+.heart:nth-child(3) {
+  left: 50%;
+  animation-delay: 1s;
+  animation-duration: 6s;
+}
+.heart:nth-child(4) {
+  left: 70%;
+  animation-delay: 3s;
+  animation-duration: 8s;
+}
+.heart:nth-child(5) {
+  left: 85%;
+  animation-delay: 1.5s;
+  animation-duration: 10s;
+}
+.heart:nth-child(6) {
+  left: 15%;
+  animation-delay: 4s;
+  animation-duration: 7s;
+}
+.heart:nth-child(7) {
+  left: 60%;
+  animation-delay: 2.5s;
+  animation-duration: 9s;
+}
+.heart:nth-child(8) {
+  left: 80%;
+  animation-delay: 0.5s;
+  animation-duration: 6s;
+}
+
+/* CARD CONTAINER */
 .card-container {
   background-color: #fff;
   width: 90%;
@@ -29,30 +129,43 @@ body {
   border-radius: 1rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  z-index: 2; /* Above hearts */
+  /* Fade/slide in effect on page load */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
 }
 
-/* Heading styling */
+/* ANIMATION KEYFRAME FOR CARD */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HEADING */
 .card-container h1 {
   font-size: 1.8rem;
   color: #ff217a; /* Vibrant pink */
   margin-bottom: 1rem;
 }
 
-/* Valentine's image styling - if you have an image, this can be replaced or sized */
+/* VALENTINE IMAGE */
 .valentine-image {
   max-width: 150px;
   height: auto;
   margin-bottom: 1rem;
 }
 
-/* Message text styling */
+/* MESSAGE TEXT */
 .message-text {
   font-size: 1rem;
   color: #333;
   margin-bottom: 1.5rem;
 }
 
-/* Play button styling */
+/* PLAY BUTTON */
 .play-button {
   background-color: #ff217a;
   color: #fff;
@@ -65,17 +178,17 @@ body {
   outline: none;
 }
 
-/* Emoji spacing in button */
+/* EMOJI SPACING IN BUTTON */
 .button-emoji {
   margin-left: 0.5rem;
 }
 
-/* Hover effect for button */
+/* HOVER EFFECT FOR BUTTON */
 .play-button:hover {
   background-color: #e60f62;
 }
 
-/* Disabled button styling once clicked */
+/* DISABLED BUTTON STYLING ONCE CLICKED */
 .play-button:disabled {
   background-color: #cfcfcf;
   cursor: not-allowed;
