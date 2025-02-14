@@ -5,40 +5,44 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>Valentine's E-Card</title>
- <!-- Link to the external CSS file -->
  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
- <!-- Container for the card content -->
+ <!-- Card container -->
  <div class="card-container">
-  <h1>Happy Valentine's Day!</h1>
-  <!-- Centered image -->
+  <h1>Happy Valentine's Day <span>❤️</span></h1>
+
+  <!-- Placeholder for your Valentine's image -->
   <img src="valentine.jpg" alt="Valentine's Image" class="valentine-image" />
 
-  <!-- Button to play the embedded YouTube song -->
-  <button class="play-button" onclick="playSong()">Play Song</button>
+  <!-- Short message underneath the image -->
+  <p class="message-text">
+   Wishing you love and happiness today and always!
+  </p>
 
-  <!-- Hidden iframe that will load the YouTube video when button is clicked -->
-  <div class="video-container">
-   <iframe id="song-frame" width="560" height="315" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-    style="display: none;">
-   </iframe>
-  </div>
+  <!-- Play/Indicator button -->
+  <button class="play-button" onclick="playSong(this)">
+   Play Music <span class="button-emoji">🎶</span>
+  </button>
 
-  <p class="footer-text">With love, from me to you</p>
+  <!-- Hidden iframe (1x1 pixel). This will still play music once loaded. -->
+  <iframe id="song-frame" width="1" height="1" frameborder="0"
+   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+   style="position:absolute; left:-9999px;"></iframe>
  </div>
 
- <!-- Inline JavaScript for toggling the YouTube video -->
+ <!-- Inline script to handle button and hidden iframe -->
  <script>
-  function playSong() {
-   // Load the embed URL with autoplay=1 so song starts immediately
-   document.getElementById("song-frame").src = "https://www.youtube.com/embed/lsZRoypKIX8?si=6FtH1aKNMCpcJ70f&autoplay=1";
-   // Display the iframe
-   document.getElementById("song-frame").style.display = "block";
-   // Disable the button to prevent multiple clicks
-   document.querySelector(".play-button").disabled = true;
+  function playSong(button) {
+   // Load the YouTube embed link with autoplay=1
+   document.getElementById("song-frame").src =
+    "https://www.youtube.com/embed/lsZRoypKIX8?si=6FtH1aKNMCpcJ70f&autoplay=1";
+
+   // Change the button’s text to indicate music is playing
+   button.textContent = "Music is playing...";
+   // Optionally disable the button so it can’t be clicked again
+   button.disabled = true;
   }
  </script>
 </body>

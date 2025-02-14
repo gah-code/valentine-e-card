@@ -1,73 +1,82 @@
-/* Reset some default browser styles */
+/* Universal reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styling */
+/* Body styling - pink background */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #fde4eb; /* A soft pink-ish background */
+  font-family: 'Arial', sans-serif;
+  /* Simple solid background or use a gradient */
+  background: #fe6fa5; /* fallback pink color */
+  /* Example: linear gradient
+  background: linear-gradient(135deg, #fd6ca4, #ff90c3);
+  */
+
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-/* Card container to center content and control layout */
+/* Card container */
 .card-container {
-  background: white;
-  border-radius: 8px;
-  text-align: center;
-  padding: 20px;
-  max-width: 600px;
+  background-color: #fff;
   width: 90%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 /* Heading styling */
 .card-container h1 {
-  margin-bottom: 20px;
-  color: #e0005a; /* Valentine's-themed color */
-  font-weight: bold;
+  font-size: 1.8rem;
+  color: #ff217a; /* Vibrant pink */
+  margin-bottom: 1rem;
 }
 
-/* Centered image styling */
+/* Valentine's image styling - if you have an image, this can be replaced or sized */
 .valentine-image {
-  max-width: 100%;
+  max-width: 150px;
   height: auto;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
-/* Button styling */
+/* Message text styling */
+.message-text {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Play button styling */
 .play-button {
-  background-color: #e0005a;
+  background-color: #ff217a;
   color: #fff;
   border: none;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  border-radius: 8px;
   transition: background-color 0.3s ease;
+  outline: none;
 }
 
+/* Emoji spacing in button */
+.button-emoji {
+  margin-left: 0.5rem;
+}
+
+/* Hover effect for button */
 .play-button:hover {
-  background-color: #c7004f;
+  background-color: #e60f62;
 }
 
-/* Video container for the iframe */
-.video-container {
-  width: 100%;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-/* Footer text at the bottom of the card */
-.footer-text {
-  color: #333;
-  font-style: italic;
+/* Disabled button styling once clicked */
+.play-button:disabled {
+  background-color: #cfcfcf;
+  cursor: not-allowed;
 }
