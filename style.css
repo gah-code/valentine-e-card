@@ -1,0 +1,73 @@
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fde4eb; /* A soft pink-ish background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Card container to center content and control layout */
+.card-container {
+  background: white;
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styling */
+.card-container h1 {
+  margin-bottom: 20px;
+  color: #e0005a; /* Valentine's-themed color */
+  font-weight: bold;
+}
+
+/* Centered image styling */
+.valentine-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Button styling */
+.play-button {
+  background-color: #e0005a;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #c7004f;
+}
+
+/* Video container for the iframe */
+.video-container {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Footer text at the bottom of the card */
+.footer-text {
+  color: #333;
+  font-style: italic;
+}
